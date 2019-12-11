@@ -32,8 +32,27 @@ Pak vytvořte uživatele dle následujícího postupu.
 ```sh
 isql-fb
 Use CONNECT or CREATE DATABASE to specify a database
-SQL> connect localhost:SVJIS_PRODUCTION user sysdba password <password>;
-Database: localhost:SVJIS_PRODUCTION, User: SYSDBA
+SQL> connect localhost:SVJIS_TEST user sysdba password <password>;
+Database: localhost:SVJIS_TEST, User: SYSDBA
 SQL> create user web password '<password>';
+SQL> quit;
+```
+
+## Vytváření dalších společností
+
+Aplikace umožňuje provoz více společenství. Pokud chcete vytvořit další společenství ta se připojte k běžící instanci:
+
+```sh
+docker exec -it fb bash
+```
+
+Pak vytvořte další společenství dle následujícího postupu.
+
+```sh
+isql-fb
+Use CONNECT or CREATE DATABASE to specify a database
+SQL> connect localhost:SVJIS_TEST user sysdba password <password>;
+Database: localhost:SVJIS_TEST, User: SYSDBA
+SQL> execute procedure SP_CREATE_COMPANY 'www.another.svj.cz';
 SQL> quit;
 ```

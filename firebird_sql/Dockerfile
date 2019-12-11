@@ -23,7 +23,7 @@ WORKDIR /opt
 # Create Database
 # ---------------
 RUN mkdir /opt/db
-RUN echo "SVJIS_PRODUCTION = /opt/db/SVJIS_PRODUCTION.FDB" >> /etc/firebird/3.0/databases.conf
+RUN echo "SVJIS_TEST = /opt/db/SVJIS_TEST.FDB" >> /etc/firebird/3.0/databases.conf
 COPY create_db.sql create_db.sql 
 RUN isql-fb -i create_db.sql
 RUN rm create_db.sql
@@ -38,17 +38,17 @@ RUN rm update_admin.sql
 # Create Company
 # --------------
 RUN curl -k -s https://raw.githubusercontent.com/svjis/svjis/master/db_schema/database.sql -O
-RUN isql-fb -i database.sql db/SVJIS_PRODUCTION.FDB
+RUN isql-fb -i database.sql db/SVJIS_TEST.FDB
 RUN rm database.sql
 COPY create_company.sql create_company.sql
 RUN sed -i "s/COMPANY_NAME/$COMPANY_NAME/g" create_company.sql
-RUN isql-fb -i create_company.sql db/SVJIS_PRODUCTION.FDB
+RUN isql-fb -i create_company.sql db/SVJIS_TEST.FDB
 RUN rm create_company.sql
 
 # Or restore DB from backup file
 # ------------------------------
 #COPY db_backup.fbk db_backup.fbk
-#RUN gbak -rep -v db_backup.fbk db/SVJIS_PRODUCTION.FDB
+#RUN gbak -rep -v db_backup.fbk db/SVJIS_TEST.FDB
 #RUN rm db_backup.fbk
 
 # Modify Database Setup
@@ -61,8 +61,8 @@ RUN sed -i "s/RemoteBindAddress = localhost/#RemoteBindAddress = localhost/g" /e
 
 # Run Firebird
 # ------------
-RUN chown firebird db/SVJIS_PRODUCTION.FDB
-RUN chgrp firebird db/SVJIS_PRODUCTION.FDB
+RUN chown firebird db/SVJIS_TEST.FDB
+RUN chgrp firebird db/SVJIS_TEST.FDB
 
 EXPOSE 3050/tcp
 ENTRYPOINT ["/usr/sbin/fbguard"]
