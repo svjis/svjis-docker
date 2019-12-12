@@ -37,7 +37,7 @@ RUN rm update_admin.sql
 
 # Create Company
 # --------------
-RUN curl -k -s https://raw.githubusercontent.com/svjis/svjis/master/db_schema/database.sql -O
+RUN curl -k -s https://raw.githubusercontent.com/svjis/svjis/develop/db_schema/database.sql -O
 RUN isql-fb -i database.sql db/SVJIS_TEST.FDB
 RUN rm database.sql
 COPY create_company.sql create_company.sql
