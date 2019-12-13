@@ -35,6 +35,7 @@ Use CONNECT or CREATE DATABASE to specify a database
 SQL> connect localhost:SVJIS_TEST user sysdba password <password>;
 Database: localhost:SVJIS_TEST, User: SYSDBA
 SQL> create user web password '<password>';
+SQL> commit;
 SQL> quit;
 ```
 
@@ -54,5 +55,6 @@ Use CONNECT or CREATE DATABASE to specify a database
 SQL> connect localhost:SVJIS_TEST user sysdba password <password>;
 Database: localhost:SVJIS_TEST, User: SYSDBA
 SQL> execute procedure SP_CREATE_COMPANY 'www.another.svj.cz';
+SQL> commit;
 SQL> quit;
 ```
