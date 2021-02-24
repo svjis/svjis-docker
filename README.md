@@ -1,4 +1,4 @@
-# SVJIS - Docker files
+# SVJIS - Docker
 
-* `firebird_sql` - databáze
-* `tomcat` - aplikační server
+* `docker-compose` - Docker compose yaml
+* `svjis-app` - Dockerfile pro SVJIS aplikaci
