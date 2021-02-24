@@ -1,0 +1,24 @@
+version: '3'
+services:
+  svjis-app:
+    image: berk76/svjis-app:latest
+    ports:
+    - 8080:8080
+    environment:
+      - DB_SERVER=svjis-db
+      - DB_USERNAME=web
+      - DB_PASSWORD=sdjfsdhf21f
+  svjis-db:
+    image: jacobalberty/firebird:3.0.7
+    ports:
+      - 3050:3050
+    environment:
+      - ISC_PASSWORD=sdjfsdhf21f
+      - FIREBIRD_DATABASE=SVJIS_TEST
+      - FIREBIRD_USER=web
+      - FIREBIRD_PASSWORD=sdjfsdhf21f
+    volumes:
+      - svjis-data:/firebird
+volumes:
+  svjis-data:
+    driver: local
