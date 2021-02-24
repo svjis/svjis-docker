@@ -4,19 +4,20 @@
 
 Image sestavíte následujícím příkazem, který má několik parametrů:
 
-* `DOMAIN` - URL vašeho SVJ.
-* `DB_SR` - hostname nebo ip adresa databázového serveru
-* `DB_US` - jméno uživatele (zpravidla `web`) 
-* `DB_PW` - heslo uživatele 
-
 ```sh
-docker build --build-arg DOMAIN=www.mysvj.com --build-arg DB_SR=server --build-arg DB_US=user --build-arg DB_PW=password -t tomcat .
+docker build -t berk76/svjis-app:latest .
 ```
 
 ## Spuštění image
 
+Porměnné prostředí
+
+* `DB_SERVER` - databázový server
+* `DB_USERNAME` - uživatelské jméno
+* `DB_PASSWORD` - heslo 
+
 ```sh
-docker run -d --name tom -p 8080:8080 tomcat
+docker run -e DB_SERVER=<db server> -e DB_USERNAME=<db user> -e DB_PASSWORD=<db password> -d --name svjis -p 8080:8080 berk76/svjis-app:latest
 ```
 
 ## Po spuštění
