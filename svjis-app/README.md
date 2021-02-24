@@ -20,8 +20,4 @@ Porměnné prostředí
 docker run -e DB_SERVER=<db server> -e DB_USERNAME=<db user> -e DB_PASSWORD=<db password> -d --name svjis -p 8080:8080 berk76/svjis-app:latest
 ```
 
-## Po spuštění
-
-* Spusťte aplikaci na adrese http://localhost:8080. 
-* Přihlašte se jako `admin` heslo je `masterkey`. 
-* Proveďte konfiguraci aplikace dle [wiki](https://github.com/svjis/svjis/wiki/Parametrizace).
+Pro spuštění aplikace včetně databáze postupujte dle návodu ve složce `docker-compose`.

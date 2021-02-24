@@ -12,6 +12,8 @@ docker-compose -f svjis.yml down
 
 ## Vytvoření db schema
 
+Pokud jste spustili aplikaci poprvé tak je třeba vytvořit DB schema:  
+
 Zjistěte id DB kontejneru
 ```
 docker ps
@@ -33,3 +35,9 @@ rm /firebird/comp.sql
 apt-get purge -qy --auto-remove curl
 exit
 ```
+
+## Po spuštění
+
+* Spusťte aplikaci na adrese http://localhost:8080. 
+* Přihlašte se jako `admin` heslo je `masterkey`. 
+* Proveďte konfiguraci aplikace dle [wiki](https://github.com/svjis/svjis/wiki/Parametrizace).
