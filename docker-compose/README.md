@@ -1,5 +1,7 @@
 # SVJIS Docker compose
 
+## 1. Spuštění aplikace
+
 Spuštění
 ```
 docker-compose -f svjis.yml up
@@ -10,7 +12,7 @@ Zastavení
 docker-compose -f svjis.yml down
 ```
 
-## Vytvoření schema databáze
+## 2. Vytvoření schema databáze
 
 Pokud jste docker compose spustili poprvé, tak bude potřeba vytvořit schema databáze.  
 
@@ -24,15 +26,13 @@ docker cp ./create-schema.sh docker-compose_svjis-db_1:/firebird/
 docker exec -it docker-compose_svjis-db_1 bash "/firebird/create-schema.sh"
 ```
 
-## Po spuštění
+## 3. Po spuštění
 
 * Spusťte aplikaci na adrese http://localhost:8080. 
 * Přihlašte se jako `admin` heslo je `masterkey`. 
 * Proveďte konfiguraci aplikace dle [wiki](https://github.com/svjis/svjis/wiki/Parametrizace).
 
-## Administrace databáze
-
-Pokud jste spustili aplikaci poprvé tak je třeba vytvořit DB schema:  
+## 4. Administrace databáze
 
 Přihlašte se do Firebirdadminu: http://localhost:8081
 
