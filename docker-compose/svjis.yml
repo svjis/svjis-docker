@@ -19,6 +19,10 @@ services:
       - FIREBIRD_PASSWORD=sdjfsdhf21f
     volumes:
       - svjis-data:/firebird
+  firebirdadmin:
+    image: marianaldenhoevel/firebirdwebadmin:latest
+    ports:
+    - 8081:80
 volumes:
   svjis-data:
     driver: local

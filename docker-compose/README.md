@@ -10,9 +10,22 @@ Zastavení
 docker-compose -f svjis.yml down
 ```
 
-## Vytvoření db schema
+## Administrace databáze
 
 Pokud jste spustili aplikaci poprvé tak je třeba vytvořit DB schema:  
+
+Přihlašte se do Firebirdadminu: http://localhost:8081
+
+* Database: SVJIS_TEST
+* Host: svjis-db
+* Username: SYSDBA
+* Password: sdjfsdhf21f (v svjis.yml si nastavte vlastní heslo a to použijte i zde)
+* Character Set: UTF8
+* Server: FB_3.0
+* Tlačítko Login
+
+
+## Prvotní vytvoření schematu
 
 Zjistěte id DB kontejneru
 ```
