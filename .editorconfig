@@ -13,3 +13,6 @@ insert_final_newline = true
 
 [*.sh]
 end_of_line = lf
+
+[*.md]
+trim_trailing_whitespace = false
