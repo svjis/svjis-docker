@@ -4,7 +4,7 @@ RUN apk update && apk upgrade && apk add --no-cache bash git openssh
 WORKDIR /app
 RUN git clone https://github.com/svjis/svjis.git svjis
 WORKDIR /app/svjis
-RUN git checkout develop
+RUN git checkout master
 RUN mvn -e -B  package
 
 
