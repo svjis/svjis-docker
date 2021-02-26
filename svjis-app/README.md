@@ -1,4 +1,4 @@
-# Tomcat
+# SVJIS App
 
 ## Jak sestavit image
 
