@@ -34,10 +34,10 @@ docker exec -it docker-compose_svjis-db_1 bash "/firebird/create-schema.sh"
 
 Přihlašte se do Firebirdadminu: http://localhost:8081
 
-* Database: SVJIS_TEST
+* Database: SVJIS_PRODUCTION
 * Host: svjis-db
 * Username: SYSDBA
-* Password: sdjfsdhf21f (v svjis.yml si nastavte vlastní heslo a to použijte i zde)
+* Password: change-it (v svjis.yml si nastavte vlastní heslo a to použijte i zde)
 * Character Set: UTF8
 * Server: FB_3.0
 * Tlačítko Login
