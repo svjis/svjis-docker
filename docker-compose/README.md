@@ -2,6 +2,8 @@
 
 ## 1. Spuštění aplikace
 
+V souborech `svjis.yml` a `create-schema.sh` změňte defaultní heslo `change-it` na nové.  
+
 Spuštění
 ```
 docker-compose -f svjis.yml up
@@ -16,10 +18,6 @@ docker-compose -f svjis.yml down
 
 Pokud jste docker compose spustili poprvé, tak bude potřeba vytvořit schema databáze.  
 
-Zjistěte id DB kontejneru
-```
-docker ps
-```
 Zkopírujte skript pro vytvoření schematu a spusťte jej.
 ```
 docker cp ./create-schema.sh docker-compose_svjis-db_1:/firebird/
