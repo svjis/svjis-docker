@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svjis-app
+  labels:
+    app: svjis-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svjis-app
+  template:
+    metadata:
+      labels:
+        app: svjis-app
+    spec:
+      containers:
+      - name: svjis-app
+        image: berk76/svjis-app:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: svjis-secret
+              key: web-username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: svjis-secret
+              key: web-password
+        - name: DB_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: svjis-configmap
+              key: database_url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svjis-app-service
+spec:
+  selector:
+    app: svjis-app
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30000

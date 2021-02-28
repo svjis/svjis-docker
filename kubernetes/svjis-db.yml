@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svjis-db-deployment
+  labels:
+    app: svjis-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svjis-db
+  template:
+    metadata:
+      labels:
+        app: svjis-db
+    spec:
+      containers:
+      - name: svjis-db
+        image: jacobalberty/firebird:3.0.7
+        ports:
+        - containerPort: 3050
+        env:
+        - name: ISC_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: svjis-secret
+              key: sysdba-password
+        - name: FIREBIRD_USER
+          valueFrom:
+            secretKeyRef:
+              name: svjis-secret
+              key: web-username
+        - name: FIREBIRD_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: svjis-secret
+              key: web-password
+        - name: FIREBIRD_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: svjis-configmap
+              key: database
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svjis-db-service
+spec:
+  selector:
+    app: svjis-db
+  ports:
+    - protocol: TCP
+      port: 3050
+      targetPort: 3050
