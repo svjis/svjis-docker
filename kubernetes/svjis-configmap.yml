@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: svjis-configmap
+data:
+  database_url: svjis-db-service
+  database: SVJIS_PRODUCTION
