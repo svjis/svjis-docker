@@ -1,14 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: svjis-db-deployment
-  labels:
-    app: svjis-db
+  name: svjis-db-statefulset
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: svjis-db
+  serviceName: svjis-db-service
+  replicas: 1
   template:
     metadata:
       labels:
@@ -19,6 +18,10 @@ spec:
         image: jacobalberty/firebird:3.0.7
         ports:
         - containerPort: 3050
+          name: db
+        volumeMounts:
+        - name: db
+          mountPath: /firebird
         env:
         - name: ISC_PASSWORD
           valueFrom:
@@ -40,7 +43,14 @@ spec:
             configMapKeyRef:
               name: svjis-configmap
               key: database
-        
+  volumeClaimTemplates:
+  - metadata:
+      name: db
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
