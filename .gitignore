@@ -1,3 +1,4 @@
 *.fbk
 *.bak
 workspace.code-workspace
+tmp/
