@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svjis-app-service
+spec:
+  selector:
+    app: svjis-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: svjis-ingress
+spec:
+  #tls:
+  #- hosts:
+  #  - svjis.com
+  #  secretName: svjis-secretname-tls
+  rules:
+  - host: svjis.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: svjis-app-service
+          servicePort: 8080
