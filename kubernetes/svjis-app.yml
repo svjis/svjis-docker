@@ -35,3 +35,11 @@ spec:
             configMapKeyRef:
               name: svjis-configmap
               key: database_url
+        #resources:
+        #  requests:
+        #    cpu: 250m
+        #    memory: 1024Mi
+        #  limits:
+        #    cpu: 500m
+        #    memory: 1024Mi
+

@@ -59,6 +59,7 @@ metadata:
 spec:
   selector:
     app: svjis-db
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 3050
