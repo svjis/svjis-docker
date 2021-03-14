@@ -6,11 +6,17 @@ $ kubectl apply -f svjis-configmap.yml
 $ kubectl apply -f svjis-secret.yml
 $ kubectl apply -f svjis-db.yml
 $ kubectl apply -f svjis-app.yml
+```
+
+## 1.1 Externí služba
+Pro přístup k aplikaci je třeba spustit externí službu. Tou může být buď load-balancer nebo ingress.
+
+### 1.1.1 Load-Balancer
+```sh
 $ kubectl apply -f svjis-loadbalancer.yml
 ```
 
-Místo loadbalanceru je možné spustit ingress router:
-
+### 1.1.2 Ingress
 ```sh
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/cloud/deploy.yaml
 $ kubectl get pod -n ingress-nginx
@@ -30,21 +36,28 @@ $ kubectl exec -it svjis-db-statefulset-0 -- bash "/firebird/create-schema.sh"
 * Proveďte konfiguraci aplikace dle [wiki](https://github.com/svjis/svjis/wiki/Parametrizace).
 
 ## 4. Odstranění aplikace
-Pro odstranění ingressu:
+Odstranění se provede v opačném pořadí než spouštění.
+
+### 4.1 Odstranění ingressu
 ```sh
 $ kubectl delete -f svjis-ingress.yml
 $ kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/cloud/deploy.yaml
 ```
-Pro zbytek apliakce:
+
+### 4.2 Odstranění Load-Balanceru
 ```sh
 $ kubectl delete -f svjis-loadbalancer.yml
+```
+
+### 4.3 Odstranění zbytku aplikace
+```sh
 $ kubectl delete -f svjis-app.yml
 $ kubectl delete -f svjis-db.yml
 $ kubectl delete -f svjis-secret.yml
 $ kubectl delete -f svjis-configmap.yml
 ```
 
-## 5. Některé příkazy
+## 5. Některé užitečné příkazy
 ```sh
 $ kubectl apply -f <yml>
 $ kubectl delete -f <yml>

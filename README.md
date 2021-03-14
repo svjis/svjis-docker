@@ -1,5 +1,5 @@
 # SVJIS - Docker
 
-* `docker-compose` - Docker compose yaml
-* `kubernetes` - Kubernetes yaml
-* `svjis-app` - Dockerfile pro SVJIS aplikaci
+* [`docker-compose`](docker-compose/README.md) - Docker compose yaml
+* [`kubernetes`](kubernetes/README.md) - Kubernetes yaml
+* [`svjis-app`](svjis-app/README.md) - Dockerfile pro SVJIS aplikaci
