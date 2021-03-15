@@ -8,15 +8,15 @@ $ kubectl apply -f svjis-db.yml
 $ kubectl apply -f svjis-app.yml
 ```
 
-## 1.1 Externí služba
+### 1.1 Externí služba
 Pro přístup k aplikaci je třeba spustit externí službu. Tou může být buď load-balancer nebo ingress.
 
-### 1.1.1 Load-Balancer
+#### 1.1.1 Load-Balancer
 ```sh
 $ kubectl apply -f svjis-loadbalancer.yml
 ```
 
-### 1.1.2 Ingress
+#### 1.1.2 Ingress
 ```sh
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/cloud/deploy.yaml
 $ kubectl get pod -n ingress-nginx
