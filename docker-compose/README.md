@@ -28,7 +28,7 @@ docker exec -it docker-compose_svjis-db_1 bash "/firebird/create-schema.sh"
 
 * Spusťte aplikaci na adrese http://localhost:8080. 
 * Přihlašte se jako `admin` heslo je `masterkey` (po přihlášení si změňte heslo). 
-* Proveďte konfiguraci aplikace dle [wiki](https://github.com/svjis/svjis/wiki/Parametrizace).
+* Proveďte konfiguraci aplikace dle [Dokumentace](https://svjis.github.io/Parametrizace/).
 
 ## 4. Administrace databáze
 
