@@ -14,9 +14,9 @@ Zastavení
 docker-compose -f svjis.yml down
 ```
 
-## 2. Vytvoření schema databáze
+## 2. Vytvoření schematu databáze
 
-Pokud jste docker compose spustili poprvé, tak bude potřeba vytvořit schema databáze.  
+Pokud jste SVJIS v docker compose spustili poprvé, tak bude potřeba vytvořit schema databáze.  
 
 Zkopírujte skript pro vytvoření schematu a spusťte jej.
 ```
