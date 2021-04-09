@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: svjis-app
+  namespace: svjis
   labels:
     app: svjis-app
 spec:

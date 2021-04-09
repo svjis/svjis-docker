@@ -2,6 +2,7 @@
 
 ## 1. Start aplikace
 ```sh
+$ kubectl apply -f svjis-namespace.yml
 $ kubectl apply -f svjis-configmap.yml
 $ kubectl apply -f svjis-secret.yml
 $ kubectl apply -f svjis-db.yml
@@ -21,13 +22,13 @@ $ kubectl apply -f svjis-loadbalancer.yml
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/cloud/deploy.yaml
 $ kubectl get pod -n ingress-nginx
 $ kubectl apply -f svjis-ingress.yml
-$ kubectl get ingress
+$ kubectl get ingress -n svjis
 ```
 
 ## 2. Vytvoření db schematu
 ```sh
-$ kubectl cp create-schema.sh svjis-db-statefulset-0:/firebird/create-schema.sh
-$ kubectl exec -it svjis-db-statefulset-0 -- bash "/firebird/create-schema.sh"
+$ kubectl -n svjis cp create-schema.sh svjis-db-statefulset-0:/firebird/create-schema.sh
+$ kubectl -n svjis exec -it svjis-db-statefulset-0 -- bash "/firebird/create-schema.sh"
 ```
 
 ## 3. Po spuštění
@@ -55,6 +56,7 @@ $ kubectl delete -f svjis-app.yml
 $ kubectl delete -f svjis-db.yml
 $ kubectl delete -f svjis-secret.yml
 $ kubectl delete -f svjis-configmap.yml
+$ kubectl delete -f svjis-namespace.yml
 ```
 
 ## 5. Některé užitečné příkazy
