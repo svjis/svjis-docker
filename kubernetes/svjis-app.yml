@@ -36,6 +36,8 @@ spec:
             configMapKeyRef:
               name: svjis-configmap
               key: database_url
+        - name: TZ
+          value: Europe/Prague
         #resources:
         #  requests:
         #    cpu: 250m
