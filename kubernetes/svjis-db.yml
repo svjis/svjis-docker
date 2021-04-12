@@ -44,6 +44,8 @@ spec:
             configMapKeyRef:
               name: svjis-configmap
               key: database
+        - name: TZ
+          value: Europe/Prague
   volumeClaimTemplates:
   - metadata:
       name: db

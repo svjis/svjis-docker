@@ -8,6 +8,7 @@ services:
       - DB_SERVER=svjis-db
       - DB_USERNAME=web
       - DB_PASSWORD=change-it
+      - TZ=Europe/Prague
   svjis-db:
     image: jacobalberty/firebird:3.0.7
     ports:
@@ -17,6 +18,7 @@ services:
       - FIREBIRD_DATABASE=SVJIS_PRODUCTION
       - FIREBIRD_USER=web
       - FIREBIRD_PASSWORD=change-it
+      - TZ=Europe/Prague
     volumes:
       - svjis-data:/firebird
   firebirdadmin:
