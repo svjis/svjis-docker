@@ -44,7 +44,7 @@ Pokud používáte Ingress, tak můžete nasadit certifikát pro vaši doménu.
 Certifikát lze získat od různých autorit různými způsoby. Uvedu zde jeden způsob jak získat certifikát od [Let's Encrypt](https://letsencrypt.org/). Co budete potřebovat:
 
 * Budete potřebovat přístup k editaci zónového souboru DNS vaší domény. 
-* Stáhněte si bash script [getssl](https://github.com/srvrco/getssl).
+* Stáhněte si bash skript [getssl](https://github.com/srvrco/getssl).
 
 Vytvořte si konfiguraci pro vaší doménu (místo svjis.com vždy uveďte vaší doménu).
 ```sh
@@ -87,11 +87,11 @@ fulldomain="$1"
 echo "$fulldomain" > "dns_del_acme_challenge.output"
 ```
 
-Pošlete žádost o vygenerování certifikátu
+Pošlete žádost na vygenerování certifikátu
 ```sh
 $ getssl svjis.com
 ```
-Vložte token do _acme-challenge.az.svjis.com TXT záznamu jakmile o to budete požádáni. Po vygenerování certifikátu TXT záznam zase odstraňte.
+Vložte token do `_acme-challenge.az.svjis.com` TXT záznamu jakmile o to budete požádáni. Po vygenerování certifikátu TXT záznam zase odstraňte.
 
 ### 4.2 Nasazení certifikátu
 Vytvořte secret typu `kubernetes.io/tls` s certifikátem
