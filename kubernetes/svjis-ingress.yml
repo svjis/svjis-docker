@@ -16,11 +16,13 @@ kind: Ingress
 metadata:
   name: svjis-ingress
   namespace: svjis
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   #tls:
   #- hosts:
   #  - svjis.com
-  #  secretName: svjis-secretname-tls
+  #  secretName: svjis.com
   rules:
   - host: svjis.com
     http:
