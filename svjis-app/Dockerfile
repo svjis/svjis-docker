@@ -1,10 +1,11 @@
 FROM maven:3.6-jdk-8-alpine AS builder
 
-RUN apk update && apk upgrade && apk add --no-cache bash git openssh 
+ARG BRANCH=master
+RUN apk update && apk upgrade && apk add --no-cache bash git openssh
 WORKDIR /app
 RUN git clone https://github.com/svjis/svjis.git svjis
 WORKDIR /app/svjis
-RUN git checkout master
+RUN git checkout $BRANCH
 RUN mvn -e -B  package
 
 

@@ -13,8 +13,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
+        VERSION=`curl -sL https://api.github.com/repos/svjis/svjis/releases/latest | grep "tag_name" |  grep -Po '"tag_name"\s*:\s*"\K([^"]*)'`
         cd svjis-app
-        docker build -t berk76/svjis-app:latest .
+        docker build -t berk76/svjis-app:latest . --build-arg BRANCH=$VERSION
     - name: Tag version and push
       run: |
         VERSION=`curl -sL https://api.github.com/repos/svjis/svjis/releases/latest | grep "tag_name" |  grep -Po '"tag_name"\s*:\s*"\K([^"]*)'`
