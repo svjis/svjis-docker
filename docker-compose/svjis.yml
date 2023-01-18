@@ -1,9 +1,17 @@
 version: '3'
 services:
+  dispatcher:
+    image: httpd:2.4
+    ports:
+      - 8181:80
+    environment:
+      - SVJIS_APP=svjis-app
+    volumes:
+      - ./httpd_conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
   svjis-app:
     image: berk76/svjis-app:latest
     ports:
-    - 8080:8080
+      - 8080:8080
     environment:
       - DB_SERVER=svjis-db
       - DB_USERNAME=web
