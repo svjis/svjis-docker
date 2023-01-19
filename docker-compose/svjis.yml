@@ -9,6 +9,7 @@ services:
       - ./httpd_conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
       - ./httpd_conf/server.key:/usr/local/apache2/conf/server.key
       - ./httpd_conf/server.crt:/usr/local/apache2/conf/server.crt
+      - ./acme-challenge/:/usr/local/apache2/htdocs/.well-known/acme-challenge/
   svjis-app:
     image: berk76/svjis-app:latest
     ports:
