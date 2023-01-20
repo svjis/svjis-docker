@@ -1,16 +1,21 @@
 version: '3'
+
 services:
+
   svjis-app:
     image: berk76/svjis-app:latest
+    container_name: svjis_app
     ports:
-    - 8080:8080
+      - 8080:8080
     environment:
       - DB_SERVER=svjis-db
       - DB_USERNAME=web
       - DB_PASSWORD=change-it
       - TZ=Europe/Prague
+
   svjis-db:
     image: jacobalberty/firebird:3.0.7
+    container_name: svjis_db
     ports:
       - 3050:3050
     environment:
@@ -21,10 +26,13 @@ services:
       - TZ=Europe/Prague
     volumes:
       - svjis-data:/firebird
+
   firebirdadmin:
     image: marianaldenhoevel/firebirdwebadmin:latest
+    container_name: firebirdadmin
     ports:
     - 8081:80
+
 volumes:
   svjis-data:
     driver: local
