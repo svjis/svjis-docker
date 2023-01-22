@@ -22,7 +22,7 @@ jobs:
       run: |
         cd docker-compose
         docker cp ./create-schema.sh svjis_db:/firebird/
-        docker exec -t -it svjis_db bash "/firebird/create-schema.sh"
+        docker exec -T -it svjis_db bash "/firebird/create-schema.sh"
 
     - name: Stop containers
       run: |
