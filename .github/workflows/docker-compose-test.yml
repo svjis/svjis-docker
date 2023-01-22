@@ -16,7 +16,7 @@ jobs:
     - name: Start containers
       run: |
         cd docker-compose
-        docker-compose -f svjis-dev.yml up
+        docker-compose -f svjis-dev.yml up -d
 
     - name: Stop containers
       run: |
