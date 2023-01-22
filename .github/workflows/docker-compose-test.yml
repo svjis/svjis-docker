@@ -18,6 +18,12 @@ jobs:
         cd docker-compose
         docker-compose -f svjis-dev.yml up -d
 
+    - name: Create schema
+      run: |
+        cd docker-compose
+        docker cp ./create-schema.sh svjis_db:/firebird/
+        docker exec -it svjis_db bash "/firebird/create-schema.sh"
+
     - name: Stop containers
       run: |
         cd docker-compose
