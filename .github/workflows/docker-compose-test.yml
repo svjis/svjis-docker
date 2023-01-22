@@ -2,6 +2,7 @@ name: Docker compose test
 
 on:
   push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -26,7 +27,7 @@ jobs:
 
     - name: Test
       run: |
-        string="Test Company"
+        string="New Company"
         if curl -s "http://localhost:8080" | grep -q "$string"; then
             echo "'$string' found"
         else
