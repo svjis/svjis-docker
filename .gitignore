@@ -2,3 +2,4 @@
 *.bak
 workspace.code-workspace
 tmp/
+database.sql
