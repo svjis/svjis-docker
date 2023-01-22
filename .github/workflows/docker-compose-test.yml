@@ -24,6 +24,10 @@ jobs:
         docker cp ./create-schema.sh svjis_db:/firebird/
         docker exec svjis_db bash "/firebird/create-schema.sh"
 
+    - name: Test
+      run: |
+        curl localhost:8080
+
     - name: Stop containers
       run: |
         cd docker-compose
