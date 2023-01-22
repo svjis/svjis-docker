@@ -17,5 +17,8 @@ end_of_line = lf
 [*.conf]
 end_of_line = lf
 
+[*.yml]
+end_of_line = lf
+
 [*.md]
 trim_trailing_whitespace = false

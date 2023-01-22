@@ -1,6 +1,7 @@
 name: Docker compose test
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
