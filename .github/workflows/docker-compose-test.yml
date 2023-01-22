@@ -26,9 +26,17 @@ jobs:
 
     - name: Test
       run: |
-        curl localhost:8080
+        string="Test Company"
+        if curl -s "http://localhost:8080" | grep -q "$string"; then
+            echo "'$string' found"
+        else
+            curl "http://localhost:8080"
+            echo "'$string' not found"
+            exit 1
+        fi
 
     - name: Stop containers
+      if: always()
       run: |
         cd docker-compose
         docker-compose -f svjis-dev.yml down
