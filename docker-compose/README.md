@@ -18,6 +18,13 @@ docker-compose -f svjis-dev.yml down
 
 Pokud jste SVJIS v docker compose spustili poprvé, tak bude potřeba vytvořit schema databáze.  
 
+Stáhněte si poslední verzi databázového schema a zkopírujte ho do kontajneru
+```
+cd docker-compose
+curl -k -L -o ./database.sql -L https://raw.githubusercontent.com/svjis/svjis/master/db_schema/database.sql
+docker cp ./database.sql svjis_db:/firebird/
+```
+
 Zkopírujte skript pro vytvoření schematu a spusťte jej.
 ```
 docker cp ./create-schema.sh svjis_db:/firebird/
