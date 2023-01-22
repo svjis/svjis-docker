@@ -1,4 +1,4 @@
-name: svjis-app image CI
+name: svjis-app image build and push
 
 on:
   workflow_dispatch:
