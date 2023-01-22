@@ -1,0 +1,23 @@
+name: Docker compose test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Start containers
+      run: |
+        cd docker-compose
+        docker-compose -f svjis-dev.yml up
+
+    - name: Stop containers
+      run: |
+        cd docker-compose
+        docker-compose -f svjis-dev.yml down
