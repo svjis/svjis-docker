@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Selenium test
+    - name: Install Google Chrome
       run: |
         sudo apt install google-chrome-stable
         google-chrome --version
