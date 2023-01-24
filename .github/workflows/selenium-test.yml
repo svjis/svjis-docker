@@ -1,0 +1,74 @@
+name: selenium test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Start containers
+      run: |
+        cd docker-compose
+        docker-compose -f svjis-dev.yml up -d
+
+    - name: Create schema
+      run: |
+        cd docker-compose
+        curl -k -L -o ./database.sql -L https://raw.githubusercontent.com/svjis/svjis/master/db_schema/database.sql
+        docker cp ./database.sql svjis_db:/firebird/
+        docker cp ./create-schema.sh svjis_db:/firebird/
+        docker exec svjis_db bash "/firebird/create-schema.sh"
+
+    - name: Test of docker-compose
+      run: |
+        string="New Company"
+        if curl -s "http://localhost:8080" | grep -q "$string"; then
+            echo "'$string' found"
+        else
+            curl "http://localhost:8080"
+            echo "'$string' not found"
+            exit 1
+        fi
+
+    - name: Install Google Chrome
+      run: |
+        sudo apt install google-chrome-stable
+        google-chrome --version
+
+    - name: Install ChromeDriver
+      run: |
+        CHROME_VERSION=$(google-chrome --version | cut -f 3 -d ' ' | cut -d '.' -f 1) \
+          && CHROMEDRIVER_RELEASE=$(curl --location --fail --retry 3 http://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}) \
+          && curl --silent --show-error --location --fail --retry 3 --output /tmp/chromedriver_linux64.zip "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_RELEASE/chromedriver_linux64.zip" \
+          && cd /tmp \
+          && unzip chromedriver_linux64.zip \
+          && rm -rf chromedriver_linux64.zip \
+          && sudo mv chromedriver /usr/local/bin/chromedriver \
+          && sudo chmod +x /usr/local/bin/chromedriver \
+          && chromedriver --version
+
+    - name: Run selenium test
+      run: |
+        git clone https://github.com/svjis/svjis-selenium.git
+        cd svjis-selenium
+        mvn test
+
+    - name: Archive screen shots
+      uses: actions/upload-artifact@v3
+      with:
+        name: png pictures
+        path: svjis-selenium/target/*.png
+
+    - name: Stop containers
+      if: always()
+      run: |
+        cd docker-compose
+        docker-compose -f svjis-dev.yml down
