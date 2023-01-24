@@ -63,6 +63,7 @@ jobs:
 
     - name: Run selenium test run
       run: |
+        cd svjis-selenium
         java -jar target/svjis-selenium-1.0.0-SNAPSHOT.jar
 
     - name: Stop containers
