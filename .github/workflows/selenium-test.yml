@@ -59,7 +59,7 @@ jobs:
       run: |
         git clone https://github.com/svjis/svjis-selenium.git
         cd svjis-selenium
-        mvn test
+        mvn test --no-transfer-progress
 
     - name: Archive screen shots
       uses: actions/upload-artifact@v3
