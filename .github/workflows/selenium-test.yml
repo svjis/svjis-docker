@@ -1,4 +1,4 @@
-name: Selenium
+name: selenium test
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
         docker cp ./create-schema.sh svjis_db:/firebird/
         docker exec svjis_db bash "/firebird/create-schema.sh"
 
-    - name: Test
+    - name: Test of docker-compose
       run: |
         string="New Company"
         if curl -s "http://localhost:8080" | grep -q "$string"; then
