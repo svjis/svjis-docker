@@ -61,6 +61,12 @@ jobs:
         cd svjis-selenium
         mvn test
 
+    - name: Archive screen shots
+      uses: actions/upload-artifact@v3
+      with:
+        name: png pictures
+        path: svjis-selenium/target/*.png
+
     - name: Stop containers
       if: always()
       run: |
