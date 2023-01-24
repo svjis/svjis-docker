@@ -55,6 +55,13 @@ jobs:
           && sudo chmod +x /usr/local/bin/chromedriver \
           && chromedriver --version
 
+    - name: Run selenium test
+      run: |
+        git clone https://github.com/svjis/svjis-selenium.git
+        cd svjis-selenium
+        make install
+
+
     - name: Stop containers
       if: always()
       run: |
