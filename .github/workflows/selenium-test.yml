@@ -59,7 +59,7 @@ jobs:
       run: |
         git clone https://github.com/svjis/svjis-selenium.git
         cd svjis-selenium
-        make install
+        mvn install
 
 
     - name: Stop containers
