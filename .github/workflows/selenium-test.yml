@@ -64,6 +64,6 @@ jobs:
     - name: Stop containers
       if: always()
       run: |
-        ls /svjis-selenium/target/test-classes
+        ls svjis-selenium/target/test-classes/
         cd docker-compose
         docker-compose -f svjis-dev.yml down
