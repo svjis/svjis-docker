@@ -5,6 +5,7 @@ services:
   svjis-app:
     image: berk76/svjis-app:latest
     container_name: svjis_app
+    restart: unless-stopped
     ports:
       - 8080:8080
     environment:
@@ -16,6 +17,7 @@ services:
   svjis-db:
     image: jacobalberty/firebird:3.0.7
     container_name: svjis_db
+    restart: unless-stopped
     ports:
       - 3050:3050
     environment:
@@ -30,6 +32,7 @@ services:
   firebirdadmin:
     image: marianaldenhoevel/firebirdwebadmin:latest
     container_name: firebirdadmin
+    restart: unless-stopped
     ports:
     - 8081:80
 
