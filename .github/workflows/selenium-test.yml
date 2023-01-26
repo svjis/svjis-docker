@@ -1,8 +1,8 @@
-name: selenium test
+name: selenium
 
 on:
   push:
-  pull_request:
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -64,7 +64,7 @@ jobs:
     - name: Archive screen shots
       uses: actions/upload-artifact@v3
       with:
-        name: png pictures
+        name: Screenshots
         path: svjis-selenium/target/*.png
 
     - name: Stop containers
