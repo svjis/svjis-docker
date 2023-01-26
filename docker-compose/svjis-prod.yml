@@ -41,8 +41,8 @@ services:
       - FIREBIRD_PASSWORD=change-it
       - TZ=Europe/Prague
     volumes:
-      - svjis-data:/firebird
+      - svjis-data-prod:/firebird
 
 volumes:
-  svjis-data:
+  svjis-data-prod:
     driver: local
