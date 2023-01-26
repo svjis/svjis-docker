@@ -4,20 +4,21 @@ services:
 
   proxy:
     image: httpd:2.4
-    container_name: proxy
+    container_name: proxy-prod
     restart: unless-stopped
     ports:
       - 8181:80
       - 443:443
     volumes:
       - ./httpd_conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./httpd_conf/httpd-ssl.conf:/usr/local/apache2/conf/extra/httpd-ssl.conf
       - ./httpd_conf/server.key:/usr/local/apache2/conf/server.key
       - ./httpd_conf/server.crt:/usr/local/apache2/conf/server.crt
       - ./acme-challenge/:/usr/local/apache2/htdocs/.well-known/acme-challenge/
 
   svjis-app:
     image: berk76/svjis-app:latest
-    container_name: svjis_app
+    container_name: svjis_app-prod
     restart: unless-stopped
     ports:
       - 8080:8080
@@ -29,7 +30,7 @@ services:
 
   svjis-db:
     image: jacobalberty/firebird:3.0.7
-    container_name: svjis_db
+    container_name: svjis_db-prod
     restart: unless-stopped
     ports:
       - 3050:3050
@@ -40,8 +41,8 @@ services:
       - FIREBIRD_PASSWORD=change-it
       - TZ=Europe/Prague
     volumes:
-      - svjis-data:/firebird
+      - svjis-data-prod:/firebird
 
 volumes:
-  svjis-data:
+  svjis-data-prod:
     driver: local
