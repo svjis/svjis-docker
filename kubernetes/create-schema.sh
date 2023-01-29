@@ -3,7 +3,7 @@ PASSWORD=change-it
 DATABASE=SVJIS_PRODUCTION
 
 apt-get update
-apt-get install -qy --no-install-recommends curl
+apt-get install -qy --force-yes --no-install-recommends curl
 curl -k -L -o /firebird/database.sql -L https://raw.githubusercontent.com/svjis/svjis/master/db_schema/database.sql
 /usr/local/firebird/bin/isql -user "$USER" -password "$PASSWORD" -input '/firebird/database.sql' "localhost:$DATABASE"
 rm /firebird/database.sql
