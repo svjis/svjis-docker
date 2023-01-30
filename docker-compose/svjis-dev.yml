@@ -15,7 +15,7 @@ services:
       - TZ=Europe/Prague
 
   svjis-db:
-    image: jacobalberty/firebird:3.0.7
+    image: jacobalberty/firebird:3.0.10
     container_name: svjis_db
     restart: unless-stopped
     ports:
