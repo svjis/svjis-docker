@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: svjis-db
-        image: jacobalberty/firebird:3.0.10
+        image: jacobalberty/firebird:v3.0.10
         ports:
         - containerPort: 3050
           name: db
