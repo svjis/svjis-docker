@@ -19,7 +19,7 @@ jobs:
       with:
         # https://github.com/actions/setup-java#supported-distributions
         distribution: 'microsoft'
-        java-version: 8
+        java-version: 11
 
     - name: Start containers
       run: |
