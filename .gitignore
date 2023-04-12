@@ -3,3 +3,4 @@
 workspace.code-workspace
 tmp/
 database.sql
+svjis-data/
