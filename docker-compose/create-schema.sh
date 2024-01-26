@@ -1,6 +1,6 @@
 USER=sysdba
 PASSWORD=change-it
-HOST=svjis-db
+HOST=svjis_db
 DATABASE=SVJIS_PRODUCTION
 
 /usr/local/firebird/bin/isql -user "$USER" -password "$PASSWORD" -input '/firebird/database.sql' "$HOST:$DATABASE"
