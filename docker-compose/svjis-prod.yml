@@ -18,7 +18,7 @@ services:
 
   svjis-app:
     image: berk76/svjis-app:latest
-    container_name: svjis_app-prod
+    container_name: svjis-app
     restart: unless-stopped
     ports:
       - 8080:8080
@@ -30,7 +30,7 @@ services:
 
   svjis-db:
     image: jacobalberty/firebird:v3.0.10
-    container_name: svjis_db-prod
+    container_name: svjis-db
     restart: unless-stopped
     ports:
       - 3050:3050
