@@ -42,3 +42,5 @@ services:
       - TZ=Europe/Prague
     volumes:
       - ./svjis-data/firebird:/firebird
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
