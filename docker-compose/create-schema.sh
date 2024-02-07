@@ -1,8 +1,9 @@
 USER=sysdba
 PASSWORD=change-it
-HOST=svjis_db
+HOST=localhost
 DATABASE=SVJIS_PRODUCTION
 
+sleep 1s
 /usr/local/firebird/bin/isql -user "$USER" -password "$PASSWORD" -input '/firebird/database.sql' "$HOST:$DATABASE"
 rm /firebird/database.sql
 echo "EXECUTE PROCEDURE SP_CREATE_COMPANY 'New Company'; COMMIT;" > /firebird/comp.sql
